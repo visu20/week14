@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Expense Tracker</title>
+</head>
+<body>
+  <h1>Venkata Sandeep Reddy Sabbella</h1>
+  <h1>Expense Tracker</h1>
+
+  <form action="/add-expense" method="POST">
+    <label for="category">Category:</label>
+    <input type="text" id="category" name="category" required><br><br>
+
+    <label for="amount">Amount:</label>
+    <input type="number" id="amount" name="amount" step="0.01" required><br><br>
+
+    <label for="date">Date:</label>
+    <input type="date" id="date" name="date" required><br><br>
+
+    <label for="description">Description:</label><br>
+    <textarea id="description" name="description"></textarea><br><br>
+
+    <button type="submit">Add Expense</button>
+  </form>
+
+  <h2>Expenses List</h2>
+  <ul>
+    <% expenses.forEach(expense => { %>
+      <li><%= expense.category %> - $<%= expense.amount.toFixed(2) %> - <%= expense.date.toISOString().split('T')[0] %> - <%= expense.description || 'No description' %></li>
+    <% }); %>
+  </ul>
+</body>
+</html>
